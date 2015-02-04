@@ -1,12 +1,16 @@
-* Bevezetes
 * Motivacio
-* UML
-** Specializacio / Generalizacio
-** Asszociacio, Kompozicio
+** Miert eri meg jobb programot irnunk?
+** Mi motivalhat minket a jobb programozova valasban?
+* Bevezetes
+** OOP szemlelet
+** Mintak, TDD, refaktoralas
 * C++
 ** Orokles
 ** Oroklesi szintek
 ** Virtualis fuggvenyek
+* UML
+** Specializacio / Generalizacio
+** Asszociacio, Kompozicio
 * TDD
 ** CppUTest
 * Minta TDD fejlesztes
@@ -17,3 +21,5 @@
 ** Strategy
 ** Template method
 ** State
+* Implementacios mintak
+* Refaktoralas
