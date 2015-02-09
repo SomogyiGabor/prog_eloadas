@@ -1,0 +1,85 @@
+* Előszó
+** Miert foglalkozzunk a TDD-vel, amikor az elsőre teljesen értelmetlennek tűnik?
+A kezdéshez rengeteg türelemre van szükség. A legapróbb kódrészlet
+tesztelése elsőre ugyan feleslegesnek tűnhet, azonban a könyv során
+kiderül, hogy ez a munkamódszer remek kódot eredményez.
+** Milyen programfejlesztési startégiák közül választhatunk?
+- Írjunk egy csomó kódot, majd kezdjük el kibogarászni
+  - Valaki valamikor csinált valamit, aminek már nem tudjuk, hogy mi
+    az értelme, de ha hozzányúlunk, nem működik semmi.
+- TDD
+  - Ha kiderül egy hiba (megbukik egy teszt), akkor az csak az utóbbi
+    pár perc munkájának eredménye lehet.
+A TDD legnagyobb erőssége a határfeltételek vizsgálatában van. Ebben a
+könyvben először mindig a működő (happy path) eseteket vizsgáljuk,
+majd utána a hibás működést (unhappy path) próbáljuk szimulálni.
+** A tesztelés első sorban dokumentáció
+Egy-egy tesztel azt próbáljuk meg leírni, hogy a vizsgált egység a
+kliensei szempontjából hogyan működik?
+** Na de mi beágyazott szovtvereket készítünk!
+Ebben a szakágban nagyon szigorú feltételeknek kell
+megfelelni. Limitált a tárhely, a memória és a számítási teljesítmény,
+miközben valós időben kell reagálni eseményekre.  Emlékezzünk vissza
+azokra az időkre, amikor a mikrokontrollereket Assembly helyett C
+nyelven keztrük el programozni. Mik voltak akkor az ellenvélemények? A
+C túl lassú.
+
+Van mód a beágyazott szoftvereket és az agilis módszertanokat
+házasitani, a kettő nem összeférhetetlen.
+
+A beágyazott rendszereknél talán kimagasló az igény, hogy megbízható
+és gyors kódot írjunk, ebben lehet segítségünkre a TDD (és az agilis
+módszerek).
+
+** Amikről szó lesz a könyvben:
+- Rengeteg kód
+- Tesztelés
+- Tervezési elméletek
+- Refaktorálás
+- Kód szagok
+- Munka örökölt kóddal
+- Tervezési minták
+- Tesztelési minták
+- stb
+
+Robert C. Martin: "So, if you are a pragmatic embedded engineer who
+lives in the real world and codes close to the metal, then, yes, this
+book is for you. You've picked it up and read this far. Now finish
+what you started and read the rest of it."
+
+* Motiváció
+** Fejlesztés hardver nélkül
+A tervezett kibocsadási időpont már meg van, de a szoftver még sehol,
+hiszen a hardver nincs kész, nem döntöttük el, hogy legyen-e OS, es ha
+igebm milyen.
+
+A cél hadrver szűk keresztmetszet. Gyakran a HW és a SW egyszerre
+fejlődik és nem állnak egymás rendelkezésére. Ha ez nem lenne elég, a
+HW és a SW is tartalmaz hibákat, gyakran nehéz meghatározni, hogy
+melyik rész a felelős. Máskor a cél hardver annyira drága, hogy nem
+lehet mindenkinél külön példány belőle, így a fejlesztőknek várakozni
+kell, az idő pedig drága.
+
+A tesztvezérelt fejlesztés segítséget nyújthat az itt felsorolt
+problémákban. TDD-vel tényleges haladást érhetünk el a HW nélkül is.
+** Megbízható kód
+** Kiknek szól a könyv
+- Egyértelműen fejlesztőknek, hiába van a címben a "teszt" szó.
+- Beágyazott rendszer fejlesztőinek, akik C nyelven programoznak
+- C és C++ programozóknak, akik szertenék megtanulni a TDD-t
+** A könyv tagolása
+1) 
+   - Rövid bevezetés a TDD-be
+   - Teszt keretrendszerek megismerése.
+   - Első modulunk tesztvezérelt fejlesztése.
+   - Felmerülő kérdések megválaszolása
+2) 
+   - Kódrészlet tesztelése, amely más kódrészleteket használ
+   - Hogyan lehet a tesztelendő kódot elszigetelni a függőségeitől?
+   - Teszt hasonmás, álca objektum bevezetése
+3) 
+   - Fontos tervezési elvek, amelyek segítenek jobb kódot írni
+   - Haladó C technikák, amelyekkel tesztelhető és rugalmas programokat készíthetünk
+   - Kódújratervezés
+   - Munka örökölt kóddal
+* Honnan kezdjuk el?
