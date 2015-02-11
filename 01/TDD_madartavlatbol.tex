@@ -1,1 +1,34 @@
 \section{TDD madártávlatból}
+
+\begin{frame}{}
+  \begin{quote}
+    Debugging is twice as hard as writing the code in the first
+    place. Therefore, if you write the code as cleverly as possible,
+    you are, by definition, not smart enough to debug it.
+  \end{quote}
+\textit{Brian Kernighan}
+\end{frame}
+
+\subsection{Kódolás $\Rightarrow$ Tesztelés}
+
+\begin{frame}{Problémák}
+  \begin{itemize}[<+->]
+  \item Az idő legalább fele szükséges a hibakereséshez
+  \item Kiszámíthatatlan a hossza, tehát nem ütemezhető
+  \item Egy hiba kijavítása más problémákat leplezhet le
+  \item Sosem lehetünk igazán biztosak, hogy nincs már több hiba
+  \item Nehéz a regresszió megállapítása
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Megoldás}
+  \begin{itemize}[<+->]
+  \item Felismerték, hogy a rövidebb ciklusok kevesebb problémát eredményeznek
+  \item Az automatizált tesztelés időt és pénzt takarít meg.
+  \item A mellékhatások így gyorsabban felismerhetőek.
+  \item A hosszú hibakeresés eliminálható
+  \end{itemize}
+
+  \pause
+  A TDD egy hatékony módszer arra, hogy a tesztelést a fejlesztésbe szőjük.
+\end{frame}
