@@ -96,8 +96,56 @@ Kódolás $\Rightarrow$ Tesztelés
 \end{frame}
 
 \subsection{A TDD mikrociklus}
+\begin{frame}{Apró lépések}
+  \begin{enumerate}[<+->]
+  \item Adj hozzá egy kis teszt
+  \item Futtasd a teszteteket, az új elbukik
+  \item Módosítsd az üzemi kódot annyira, hogy a teszt ne bukjon el
+  \item Futtasd a teszteket, az új teszt sem bukik el.
+  \item Takarítás (refactoring)
+  \end{enumerate}
+
+  \pause
+  $10 sec < \Sigma t < 5 min$
+\end{frame}
+
+\begin{frame}{Refactoring}
+  A kód több kell, hogy legyen, mint pusztán a helyes működés alapja.
+
+  \pause
+
+  Tisztán kell tartani, hogy a későbbi változások könnyen elvégezhetőek legyenek.
+
+  \pause
+
+  Nem ``dolgokat'' készítünk, hanem dokumentációt, ami alapján
+  ``dolgokat'' lehet készíteni. Szoftver esetében a programkód a
+  teljes értékű dokumentáció.
+\end{frame}
+
+\begin{frame}{A ciklus}
+  \textit{Red-Green-Refactor}
+\end{frame}
 
 \subsection{TDD előnyök}
+
+\begin{frame}
+  Időbe telik megtanulni.
+
+  \pause
+
+  \begin{itemize}[<+->]
+  \item Kevesebb hiba
+  \item Rövidebb hibakeresés
+  \item Kevesebb mellékhatásból adódó hiba
+  \item Dokumentáció, ami nem hazudik
+  \item Benső béke
+  \item Fejlett felépítés
+  \item Folyamatjelző
+  \item Móka és kacagás
+  \end{itemize}
+
+\end{frame}
 
 \subsection{Előnyök beágyazott rendszerekhez}
 
