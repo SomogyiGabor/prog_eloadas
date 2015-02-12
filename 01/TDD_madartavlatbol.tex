@@ -41,14 +41,59 @@ Kódolás $\Rightarrow$ Tesztelés
 
 \begin{frame}{A Zune bug}
   A zenelejátszó 2008. december 31-én egy napig üzemképtelen volt. Ez
-  egy szökőév utolsó napja.
+  egy szökőév utolsó napja. A hibát egyetlen tesztesettel ki lehetett
+  volna védeni.
 
   (zunebug.c)
 \end{frame}
 
+\begin{frame}{}
+  Emberek vagyunk, követünk el hibákat, a programozás pedig rendkívül
+  összetett tevékenység.
+
+  \pause
+
+  Egyéb indokok mellet a TDD egy remek módszer arra, hogy programjaink
+  szervezett módon az elvárásoknak megfelelően működjenek, valamint
+  hogy automatizált teszteseteink legyenek, amelyek hosszú távon
+  ellenőrzik a működőképességet.
+\end{frame}
+
 \subsection{Mi az a tesztvezérelt fejlesztés}
 
+\begin{frame}{}
+  \begin{itemize}[<+->]
+  \item \textbf{Nem} tesztelési módszer.
+  \item Technikailag inkremetális fejlesztési mód.
+  \item Nem írunk üzemi kódot addig, amíg nincs egy teszt, ami ellenőrzi annak működését.
+  \item A kulcs az automatizálásban rejlik. A korábbi üzemi kód is tesztelt.
+  \item Segít a fejlesztőknek megfelelő döntéseket hozni.
+  \item A tesztek megmutatják az üzemi kód elvárt működését
+  \item Segít a következő megoldandó feladatra koncentrálni
+  \item Jó móka
+  \end{itemize}
+\end{frame}
+
 \subsection{A TDD fizikája}
+
+\begin{frame}{TDD $\Leftrightarrow$ DLP}
+  \begin{itemize}[<+->]
+  \item Mi a kész fogalma?
+  \item DLP $\rightarrow$ Lassú visszacsatolás
+  \item Nem világos gyökér ok
+  \item Bizonyos működések a hibás kódra építenek
+  \item Becsülhetetlen idő
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Kép}
+  Figure 1
+
+  $T_d$: discover time \\
+  $T_{find}$: find time \\
+  $T_{fix}$: fix time \\
+  $T_d \nearrow \Rightarrow T_{find} \nearrow$
+\end{frame}
 
 \subsection{A TDD mikrociklus}
 
