@@ -3,7 +3,8 @@ UNITY_HOME = $(HOME)/Unity/src
 TARGET = sprintf_test
 SOURCES = \
 	SprintfTest.c \
-	SprintfTestRunner.c
+	SprintfTestRunner.c \
+	AllTests.c
 
 OBJECTS = $(SOURCES:.c=.o)
 DEPS = $(SOURCES:.c=.d)
