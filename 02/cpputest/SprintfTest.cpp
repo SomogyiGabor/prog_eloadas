@@ -34,7 +34,7 @@ TEST_GROUP(sprintf)
 TEST(sprintf, NoFormatOperations)
 {
 	expect("hey");
-	given(sprintf(output, "hey"));
+	given(1 + sprintf(output, "hey"));
 }
 
 TEST(sprintf, InsertStringFormatOperation)
