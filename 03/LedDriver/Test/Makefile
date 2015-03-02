@@ -1,13 +1,21 @@
 TARGET = ledDriverTest
 SOURCES = \
-	LedDriverTest.cpp
-OBJECTS = $(SOURCES:.cpp=.o)
-DEPS = $(SOURCES:.cpp=.d)
+	LedDriverTest.cpp \
+	../LedDriver.c
+
+C_SOURCES = $(filter %.c,$(SOURCES))
+CXX_SOURCES = $(filter %.cpp,$(SOURCES))
+
+OBJECTS = $(C_SOURCES:.c=.o) $(CXX_SOURCES:.cpp=.o)
+DEPS = $(C_SOURCES:.c=.d) $(CXX_SOURCES:.cpp=.d)
 
 INCLUDE_DIRECTORIES = \
 	../
 
-CXXFLAGS = $(patsubst %,-I%,$(INCLUDE_DIRECTORIES))
+INCLUDE_FLAGS = $(patsubst %,-I%,$(INCLUDE_DIRECTORIES))
+
+CFLAGS = $(INCLUDE_FLAGS)
+CXXFLAGS = $(INCLUDE_FLAGS)
 LDFLAGS = -lCppUTest
 
 CC = gcc
