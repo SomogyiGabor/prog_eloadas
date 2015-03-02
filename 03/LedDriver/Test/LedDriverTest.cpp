@@ -1,7 +1,10 @@
 #include <CppUTest/CommandLineTestRunner.h>
 #include <CppUTest/TestHarness.h>
 
+extern "C"
+{
 #include "LedDriver.h"
+}
 
 TEST_GROUP(LedDriver)
 {
