@@ -1,6 +1,8 @@
 #include <CppUTest/CommandLineTestRunner.h>
 #include <CppUTest/TestHarness.h>
 
+#include "LedDriver.h"
+
 TEST_GROUP(LedDriver)
 {
 	TEST_SETUP()

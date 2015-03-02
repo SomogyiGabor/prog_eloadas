@@ -4,7 +4,10 @@ SOURCES = \
 OBJECTS = $(SOURCES:.cpp=.o)
 DEPS = $(SOURCES:.cpp=.d)
 
-CXXFLAGS =
+INCLUDE_DIRECTORIES = \
+	../
+
+CXXFLAGS = $(patsubst %,-I%,$(INCLUDE_DIRECTORIES))
 LDFLAGS = -lCppUTest
 
 CC = gcc
