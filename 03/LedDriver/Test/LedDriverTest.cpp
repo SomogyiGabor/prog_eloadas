@@ -12,7 +12,9 @@ TEST_GROUP(LedDriver)
 
 TEST(LedDriver, LedsOffAfterCreate)
 {
-	FAIL("Start here");
+	uint16_t virtualLeds = 0xffff;
+	LedDriver_Create(&virtualLeds);
+	CHECK_EQUAL(0x0000, virtualLeds);
 }
 
 int main(const int argc, const char* argv[])
