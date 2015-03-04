@@ -8,8 +8,12 @@ extern "C"
 
 TEST_GROUP(LedDriver)
 {
+	uint16_t virtualLeds;
+
 	TEST_SETUP()
-	{}
+	{
+		LedDriver_Create(&virtualLeds);
+	}
 
 	TEST_TEARDOWN()
 	{}
@@ -24,16 +28,12 @@ TEST(LedDriver, LedsOffAfterCreate)
 
 TEST(LedDriver, TurnOnLedOne)
 {
-	uint16_t virtualLeds;
-	LedDriver_Create(&virtualLeds);
 	LedDriver_TurnOn(1);
 	CHECK_EQUAL(0x0001, virtualLeds);
 }
 
 TEST(LedDriver, TurnOffLedOne)
 {
-	uint16_t virtualLeds;
-	LedDriver_Create(&virtualLeds);
 	LedDriver_TurnOn(1);
 	LedDriver_TurnOff(1);
 	CHECK_EQUAL(0x0000, virtualLeds);
