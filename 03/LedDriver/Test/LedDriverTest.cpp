@@ -22,6 +22,14 @@ TEST(LedDriver, LedsOffAfterCreate)
 	CHECK_EQUAL(0x0000, virtualLeds);
 }
 
+TEST(LedDriver, TurnOnLedOne)
+{
+	uint16_t virtualLeds;
+	LedDriver_Create(&virtualLeds);
+	LedDriver_TurnOn(1);
+	CHECK_EQUAL(0x0001, virtualLeds);
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
