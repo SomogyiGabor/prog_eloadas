@@ -48,6 +48,14 @@ TEST(LedDriver, TurnOnMultipleTests)
 	CHECK_EQUAL(0x180, virtualLeds);
 }
 
+TEST(LedDriver, TurnOffMultipleLeds)
+{
+	LedDriver_TurnAllOn();
+	LedDriver_TurnOff(9);
+	LedDriver_TurnOff(8);
+	CHECK_EQUAL(~(0x0180) & 0xffff, virtualLeds);
+}
+
 TEST(LedDriver, TurnOffAnyLed)
 {
 	LedDriver_TurnAllOn();
