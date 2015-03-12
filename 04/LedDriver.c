@@ -32,6 +32,10 @@ static uint16_t convertLedNumberToBit(int ledNumber)
 	return 1 << (ledNumber - 1);
 }
 
+static void setLedImageBit(int ledNumber)
+{
+	ledsImage |= convertLedNumberToBit(ledNumber);
+}
 void LedDriver_TurnOn(int ledNumber)
 {
 	if (IsLedOutOfBounds(ledNumber))
@@ -39,15 +43,21 @@ void LedDriver_TurnOn(int ledNumber)
 		RUNTIME_ERROR("LED Driver: out-of-bounds LED", ledNumber);
 		return;
 	}
-	ledsImage |= convertLedNumberToBit(ledNumber);
+
+	setLedImageBit(ledNumber);
 	updateHardware();
 }
 
+static void clearLedImageBit(int ledNumber)
+{
+	ledsImage &= ~convertLedNumberToBit(ledNumber);
+}
 void LedDriver_TurnOff(int ledNumber)
 {
 	if (IsLedOutOfBounds(ledNumber))
 		return;
-	ledsImage &= ~(convertLedNumberToBit(ledNumber));
+
+	clearLedImageBit(ledNumber);
 	updateHardware();
 }
 
