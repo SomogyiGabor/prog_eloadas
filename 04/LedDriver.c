@@ -5,11 +5,16 @@ static uint16_t ledsImage;
 
 enum{ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 
+static void updateHardware()
+{
+	*ledsAddress = ledsImage;
+}
+
 void LedDriver_Create(uint16_t* address)
 {
 	ledsAddress = address;
 	ledsImage = ALL_LEDS_OFF;
-	*ledsAddress = ledsImage;
+	updateHardware();
 }
 
 static uint16_t convertLedNumberToBit(int ledNumber)
@@ -20,17 +25,17 @@ static uint16_t convertLedNumberToBit(int ledNumber)
 void LedDriver_TurnOn(int ledNumber)
 {
 	ledsImage |= convertLedNumberToBit(ledNumber);
-	*ledsAddress = ledsImage;
+	updateHardware();
 }
 
 void LedDriver_TurnOff(int ledNumber)
 {
 	ledsImage &= ~(convertLedNumberToBit(ledNumber));
-	*ledsAddress = ledsImage;
+	updateHardware();
 }
 
 void LedDriver_TurnAllOn()
 {
 	ledsImage = ALL_LEDS_ON;
-	*ledsAddress = ledsImage;
+	updateHardware();
 }
