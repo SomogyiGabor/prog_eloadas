@@ -4,6 +4,7 @@
 extern "C"
 {
 #include "LedDriver.h"
+#include "RuntimeErrorStub.h"
 }
 
 TEST_GROUP(LedDriver)

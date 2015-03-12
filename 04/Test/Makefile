@@ -1,7 +1,8 @@
 TARGET = ledDriverTest
 SOURCES = \
 	LedDriverTest.cpp \
-	../LedDriver.c
+	../LedDriver.c \
+	RuntimeErrorStub.c
 
 C_SOURCES = $(filter %.c,$(SOURCES))
 CXX_SOURCES = $(filter %.cpp,$(SOURCES))
