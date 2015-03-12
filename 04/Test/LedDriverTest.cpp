@@ -100,6 +100,13 @@ IGNORE_TEST(LedDriver, OutOfBoundsProducesRuntimeError)
 	// TODO What should we do during runtime?
 }
 
+TEST(LedDriver, IsOn)
+{
+	CHECK_FALSE(LedDriver_IsOn(11));
+	LedDriver_TurnOn(11);
+	CHECK_TRUE(LedDriver_IsOn(11));
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);

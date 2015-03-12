@@ -7,9 +7,6 @@ static uint16_t ledsImage;
 enum{ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 enum{FIRST_LED = 1, LAST_LED = 16};
 
-enum BOOL{FALSE = 0, TRUE = 1};
-typedef enum BOOL BOOL;
-
 static BOOL IsLedOutOfBounds(int ledNumber)
 {
 	return (ledNumber < FIRST_LED) || (ledNumber > LAST_LED);
@@ -62,4 +59,9 @@ void LedDriver_TurnAllOn()
 {
 	ledsImage = ALL_LEDS_ON;
 	updateHardware();
+}
+
+BOOL LedDriver_IsOn(int ledNumber)
+{
+	return ledsImage & (convertLedNumberToBit(ledNumber));
 }
