@@ -68,3 +68,7 @@ BOOL LedDriver_IsOn(int ledNumber)
 
 	return ledsImage & (convertLedNumberToBit(ledNumber));
 }
+BOOL LedDriver_IsOff(int ledNumber)
+{
+	return !LedDriver_IsOn(ledNumber);
+}

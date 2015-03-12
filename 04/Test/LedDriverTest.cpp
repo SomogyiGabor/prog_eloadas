@@ -113,6 +113,13 @@ TEST(LedDriver, OutOfBoundsLedsAreAlwaysOff)
 	CHECK_FALSE(LedDriver_IsOn(17));
 }
 
+TEST(LedDriver, IsOff)
+{
+	CHECK_TRUE(LedDriver_IsOff(7));
+	LedDriver_TurnOn(7);
+	CHECK_FALSE(LedDriver_IsOff(7));
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
