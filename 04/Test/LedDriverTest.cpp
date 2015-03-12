@@ -94,6 +94,14 @@ TEST(LedDriver, OutOfBoundsTurnOffDoesNotHarm)
 	CHECK_EQUAL(0xffff, virtualLeds);
 }
 
+TEST(LedDriver, OutOfBoundsProducesRuntimeError)
+{
+	LedDriver_TurnOn(-1);
+	STRCMP_EQUAL("LED Driver: out-of-bounds LED",
+		     RuntimeErrorStub_GetLastError());
+	CHECK_EQUAL(-1, RuntimeErrorStub_GetLastParameter());
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
