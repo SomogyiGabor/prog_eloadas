@@ -47,6 +47,16 @@ TEST(LedDriver, TurnOnMultipleTests)
 	CHECK_EQUAL(0x180, virtualLeds);
 }
 
+TEST(LedDriver, TurnOffAnyLed)
+{
+	LedDriver_TurnOn(9);
+	LedDriver_TurnOn(8);
+	LedDriver_TurnOff(8);
+
+	CHECK_EQUAL(0x100, virtualLeds);
+}
+
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
