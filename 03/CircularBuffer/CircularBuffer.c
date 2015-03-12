@@ -21,3 +21,13 @@ int CircularBuffer_Pop(int* element)
 	*element = 3;
 	return 0;
 }
+
+bool CircularBuffer_Empty()
+{
+	return true;
+}
+
+bool CircularBuffer_Full()
+{
+	return false;
+}
