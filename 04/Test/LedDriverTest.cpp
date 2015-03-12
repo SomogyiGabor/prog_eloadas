@@ -107,6 +107,12 @@ TEST(LedDriver, IsOn)
 	CHECK_TRUE(LedDriver_IsOn(11));
 }
 
+TEST(LedDriver, OutOfBoundsLedsAreAlwaysOff)
+{
+	CHECK_FALSE(LedDriver_IsOn(0));
+	CHECK_FALSE(LedDriver_IsOn(17));
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
