@@ -39,10 +39,7 @@ static void setLedImageBit(int ledNumber)
 void LedDriver_TurnOn(int ledNumber)
 {
 	if (IsLedOutOfBounds(ledNumber))
-	{
-		RUNTIME_ERROR("LED Driver: out-of-bounds LED", ledNumber);
 		return;
-	}
 
 	setLedImageBit(ledNumber);
 	updateHardware();
