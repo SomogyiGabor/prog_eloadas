@@ -6,7 +6,9 @@ static uint16_t ledsImage;
 
 enum{ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 enum{FIRST_LED = 1, LAST_LED = 16};
+
 enum BOOL{FALSE = 0, TRUE = 1};
+typedef enum BOOL BOOL;
 
 static BOOL IsLedOutOfBounds(int ledNumber)
 {
@@ -32,7 +34,7 @@ static uint16_t convertLedNumberToBit(int ledNumber)
 
 void LedDriver_TurnOn(int ledNumber)
 {
-	if (ledNumber <= 0 || ledNumber > 16)
+	if (IsLedOutOfBounds(ledNumber))
 	{
 		RUNTIME_ERROR("LED Driver: out-of-bounds LED", ledNumber);
 		return;
@@ -43,7 +45,7 @@ void LedDriver_TurnOn(int ledNumber)
 
 void LedDriver_TurnOff(int ledNumber)
 {
-	if (ledNumber <= 0 || ledNumber > 16)
+	if (IsLedOutOfBounds(ledNumber))
 		return;
 	ledsImage &= ~(convertLedNumberToBit(ledNumber));
 	updateHardware();
