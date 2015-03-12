@@ -75,6 +75,15 @@ TEST(LedDriver, UpperAndLowerBounds)
 	CHECK_EQUAL(0x8001, virtualLeds);
 }
 
+TEST(LedDriver, OutOfBoundsChangesNothing)
+{
+	LedDriver_TurnOn(-1);
+	LedDriver_TurnOn(0);
+	LedDriver_TurnOn(17);
+	LedDriver_TurnOn(3141);
+	CHECK_EQUAL(0, virtualLeds);
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
