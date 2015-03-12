@@ -68,6 +68,13 @@ TEST(LedDriver, LedMemoryIsNotReadable)
 	CHECK_EQUAL(0x0080, virtualLeds);
 }
 
+TEST(LedDriver, UpperAndLowerBounds)
+{
+	LedDriver_TurnOn(1);
+	LedDriver_TurnOn(16);
+	CHECK_EQUAL(0x8001, virtualLeds);
+}
+
 int main(const int argc, const char* argv[])
 {
 	return CommandLineTestRunner::RunAllTests(argc, argv);
