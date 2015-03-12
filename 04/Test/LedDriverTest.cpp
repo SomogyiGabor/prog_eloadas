@@ -47,7 +47,7 @@ TEST(LedDriver, TurnOnMultipleTests)
 	CHECK_EQUAL(0x180, virtualLeds);
 }
 
-TEST(LedDriver, TurnOffAnyLed)
+IGNORE_TEST(LedDriver, TurnOffAnyLed)
 {
 	LedDriver_TurnOn(9);
 	LedDriver_TurnOn(8);
@@ -56,6 +56,11 @@ TEST(LedDriver, TurnOffAnyLed)
 	CHECK_EQUAL(0x100, virtualLeds);
 }
 
+TEST(LedDriver, AllOn)
+{
+	LedDriver_TurnAllOn();
+	CHECK_EQUAL(0xffff, virtualLeds);
+}
 
 int main(const int argc, const char* argv[])
 {
