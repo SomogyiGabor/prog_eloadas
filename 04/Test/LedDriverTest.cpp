@@ -70,6 +70,13 @@ TEST(LedDriver, AllOn)
 	CHECK_EQUAL(0xffff, virtualLeds);
 }
 
+TEST(LedDriver, AllOff)
+{
+	LedDriver_TurnAllOn();
+	LedDriver_TurnAllOff();
+	CHECK_EQUAL(0x0000, virtualLeds);
+}
+
 TEST(LedDriver, LedMemoryIsNotReadable)
 {
 	virtualLeds = 0xffff;
