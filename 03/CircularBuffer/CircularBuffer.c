@@ -9,3 +9,15 @@ int CircularBuffer_Create(const size_t numberOfElements)
 
 void CircularBuffer_Destroy()
 {}
+
+
+int CircularBuffer_Push(const int element)
+{
+	return 0;
+}
+
+int CircularBuffer_Pop(int* element)
+{
+	*element = 3;
+	return 0;
+}
