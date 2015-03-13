@@ -1,0 +1,15 @@
+ - Ujonnan keszitett buffer ures
+ - Masodik inicializacio torli buffert
+ - Nulla meretu buffer nem keszitheto
+ - Buffer torlese
+ - Buffer dupla torlese nem okoz problemat
+
+ - Push ures bufferbe
+ - Push teli bufferbe
+ - Pop ures bufferbol
+ - Pop nem ures bufferbol
+
+ - Ures a buffer?
+ - Teli a buffer?
+
+ - Egy push es egy pop utan a hasznalt meret az eredetivel egyezik meg
