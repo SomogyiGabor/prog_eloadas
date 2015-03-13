@@ -1,0 +1,176 @@
+\section{TDD madártávlatból}
+
+\begin{frame}{}
+  \begin{quote}
+    Debugging is twice as hard as writing the code in the first
+    place. Therefore, if you write the code as cleverly as possible,
+    you are, by definition, not smart enough to debug it.
+  \end{quote}
+  \begin{flushright}
+    \textit{Brian Kernighan}
+  \end{flushright}
+\end{frame}
+
+\subsection{Tesztvezérelt fejlesztés}
+Kódolás $\Rightarrow$ Tesztelés
+\pause
+
+\begin{frame}{Problémák}
+  \begin{itemize}[<+->]
+  \item Az idő legalább fele szükséges a hibakereséshez
+  \item Kiszámíthatatlan a hossza, tehát nem ütemezhető
+  \item Egy hiba kijavítása más problémákat leplezhet le
+  \item Sosem lehetünk igazán biztosak, hogy nincs már több hiba
+  \item Nehéz a regresszió megállapítása
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Megoldás}
+  \begin{itemize}[<+->]
+  \item Felismerték, hogy a rövidebb ciklusok kevesebb problémát eredményeznek
+  \item Az automatizált tesztelés időt és pénzt takarít meg.
+  \item A mellékhatások így gyorsabban felismerhetőek.
+  \item A hosszú hibakeresés eliminálható
+  \end{itemize}
+
+  \pause
+  A TDD egy hatékony módszer arra, hogy a tesztelést a fejlesztésbe szőjük.
+\end{frame}
+
+\subsection{Miért van szükségünk TDD-re}
+
+\begin{frame}{A Zune bug}
+  A zenelejátszó 2008. december 31-én egy napig üzemképtelen volt. Ez
+  egy szökőév utolsó napja. A hibát egyetlen tesztesettel ki lehetett
+  volna védeni.
+
+  (zunebug.c)
+\end{frame}
+
+\begin{frame}{}
+  Emberek vagyunk, követünk el hibákat, a programozás pedig rendkívül
+  összetett tevékenység.
+
+  \pause
+
+  Egyéb indokok mellet a TDD egy remek módszer arra, hogy programjaink
+  szervezett módon az elvárásoknak megfelelően működjenek, valamint
+  hogy automatizált teszteseteink legyenek, amelyek hosszú távon
+  ellenőrzik a működőképességet.
+\end{frame}
+
+\subsection{Mi az a tesztvezérelt fejlesztés}
+
+\begin{frame}{}
+  \begin{itemize}[<+->]
+  \item \textbf{Nem} tesztelési módszer.
+  \item Technikailag inkremetális fejlesztési mód.
+  \item Nem írunk üzemi kódot addig, amíg nincs egy teszt, ami ellenőrzi annak működését.
+  \item A kulcs az automatizálásban rejlik. A korábbi üzemi kód is tesztelt.
+  \item Segít a fejlesztőknek megfelelő döntéseket hozni.
+  \item A tesztek megmutatják az üzemi kód elvárt működését
+  \item Segít a következő megoldandó feladatra koncentrálni
+  \item Jó móka
+  \end{itemize}
+\end{frame}
+
+\subsection{A TDD fizikája}
+
+\begin{frame}
+  DLP = \textbf{D}ebug \textbf{L}ater \textbf{P}rogramming
+\end{frame}
+
+\begin{frame}{TDD $\Leftrightarrow$ DLP}
+  \begin{itemize}[<+->]
+  \item Mi a kész fogalma?
+  \item DLP $\rightarrow$ Lassú visszacsatolás
+  \item Nem világos gyökér ok
+  \item Bizonyos működések a hibás kódra építenek
+  \item Becsülhetetlen idő
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Kép}
+  Figure 1
+
+  $T_d$: discover time \\
+  $T_{find}$: find time \\
+  $T_{fix}$: fix time \\
+  $T_d \nearrow \Rightarrow T_{find} \nearrow$
+\end{frame}
+
+\subsection{A TDD mikrociklus}
+\begin{frame}{Apró lépések}
+  \begin{enumerate}[<+->]
+  \item Adj hozzá egy kis teszt
+  \item Futtasd a teszteteket, az új elbukik
+  \item Módosítsd az üzemi kódot annyira, hogy a teszt ne bukjon el
+  \item Futtasd a teszteket, az új teszt sem bukik el.
+  \item Takarítás (refactoring)
+  \end{enumerate}
+
+  \pause
+  $10 sec < \Sigma t < 5 min$
+\end{frame}
+
+\begin{frame}{Refactoring}
+  A kód több kell, hogy legyen, mint pusztán a helyes működés alapja.
+
+  \pause
+
+  Tisztán kell tartani, hogy a későbbi változások könnyen elvégezhetőek legyenek.
+
+  \pause
+
+  Nem ``dolgokat'' készítünk, hanem dokumentációt, ami alapján
+  ``dolgokat'' lehet készíteni. Szoftver esetében a programkód a
+  teljes értékű dokumentáció.
+\end{frame}
+
+\begin{frame}{A ciklus}
+  \textit{Red-Green-Refactor}
+\end{frame}
+
+\subsection{Előnyök}
+
+\begin{frame}{TDD előnyök}
+  Időbe telik megtanulni.
+
+  \pause
+
+  \begin{itemize}[<+->]
+  \item Kevesebb hiba
+  \item Rövidebb hibakeresés
+  \item Kevesebb mellékhatásból adódó hiba
+  \item Dokumentáció, ami nem hazudik
+  \item Benső béke
+  \item Fejlett felépítés
+  \item Folyamatjelző
+  \item Móka és kacagás
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Előnyök beágyazott rendszerekhez}
+  Függőségek mindenhol vannak. Legyen az HW, vagy adatbázis, teljesen mindegy.
+
+  \pause
+  Fejlesztés HW nélkül. Bizonyos fokú teszteltség.
+
+  \pause
+  Rövidebb fordítási, linkelési, letőltési, futtatási ciklus.
+
+  \pause
+  Rövidebb hibakeresési idő.
+
+  \pause
+  Izolált HW és SW, mivel a HW emulált.
+
+  \pause
+  Javítja a kód felépítését, hiszen a tesztelhető kód szükségszerűen moduláris.
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "prog_eloadas_01"
+%%% End:

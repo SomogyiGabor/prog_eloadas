@@ -1,0 +1,130 @@
+\section{Bevezetés}
+
+\subsection{Mielőtt belevágnánk}
+\begin{frame}{Mielőtt belevágnánk}
+  Mint minden tanulási folyamathoz, a következőkre lesz szükségunk
+  \begin{itemize}[<+->]
+  \item Türelem
+  \item Elszántság
+  \item Bizalom
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{TDD}
+  TDD = \textbf{T}est \textbf{D}riven \textbf{D}evelopment
+\end{frame}
+
+\subsection{Programfejlesztési stratégiák}
+\begin{frame}{Programfejlesztési stratégiák}
+  \only<1>{
+    Írunk egyszerre sok kódot, madj kezdjünk el megbizonyosodni róla,
+    hogy valóban működik-e?  \\
+    Valaki valamikor csinált valamit, aminek már nem tudjuk, hogy mi
+    az értelme, de ha hozzányúlunk, nem működik semmi.
+  }
+
+  \only<2>{
+    Ha kiderül egy hiba (megbukik egy teszt), akkor az csak az utóbbi
+    pár perc munkájának eredménye lehet.
+  }
+\end{frame}
+
+\begin{frame}{A TDD előnyei és hátrányai}
+  \begin{itemize}[<+->]
+  \item Előnyök
+    \begin{itemize}
+    \item A hibák gyorsan kiderülnek
+    \item Kontrollált a környezet amelyben egy modult tesztelünk
+    \item Határfeltételek könnyen tesztelhetők
+    \end{itemize}
+  \item Hátrányok
+    \begin{itemize}
+    \item ``Lassú''
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Mi az a TDD?}
+  A tesztek bizonyos értelmezés szerint a kód dokumentációját
+  jelentik. Így lehet a legkönnyebben megmutatni a tesztelt kód
+  klienseinek szempontjából, hogy az aktuálisan fejlesztett részt
+  hogyan kell használni.
+\end{frame}
+
+\subsection{Mire számíthatunk?}
+
+\begin{frame}{Mire számíthatunk?}
+ A következő témákat fogjuk érinteni:
+
+  \begin{itemize}[<+->]
+    \item Rengeteg kód
+    \item Tesztelés
+    \item Tervezési elméletek
+    \item Refaktorálás
+    \item Kód szagok
+    \item Munka örökölt kóddal
+    \item Tervezési minták
+    \item Tesztelési minták
+    \item stb
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+  \begin{quotation}
+    So, if you are a pragmatic embedded engineer who
+    lives in the real world and codes close to the metal, then, yes, this
+    book is for you. You've picked it up and read this far. Now finish
+    what you started and read the rest of it.
+  \end{quotation}
+  \begin{flushright}
+    \textit{Robert C. Martin}
+  \end{flushright}
+\end{frame}
+
+\begin{frame}{Fejlesztés hardver nélkül}
+  \only<1>{A tervezett kibocsadási időpont már meg van, de a szoftver még sehol,
+    hiszen a hardver nincs kész, nem döntöttük el, hogy legyen-e OS, es ha
+    igebm milyen.}
+
+  \only<2>{A cél hadrver szűk keresztmetszet. Gyakran a HW és a SW egyszerre
+    fejlődik és nem állnak egymás rendelkezésére. Ha ez nem lenne elég, a
+    HW és a SW is tartalmaz hibákat, gyakran nehéz meghatározni, hogy
+    melyik rész a felelős. Máskor a cél hardver annyira drága, hogy nem
+    lehet mindenkinél külön példány belőle, így a fejlesztőknek várakozni
+    kell, az idő pedig drága.}
+\end{frame}
+
+\subsection{A könyv tagolása}
+
+\begin{frame}{A könyv tagolása}
+  \begin{enumerate}[<+->]
+  \item
+    \begin{itemize}
+    \item Rövid bevezetés a TDD-be
+    \item Teszt keretrendszerek megismerése.
+    \item Első modulunk tesztvezérelt fejlesztése.
+    \item Felmerülő kérdések megválaszolása
+    \end{itemize}
+
+  \item
+    \begin{itemize}
+    \item Kódrészlet tesztelése, amely más kódrészleteket használ
+    \item Hogyan lehet a tesztelendő kódot elszigetelni a függőségeitől?
+    \item Teszt hasonmás, álca objektum bevezetése
+    \end{itemize}
+
+  \item
+    \begin{itemize}
+    \item Fontos tervezési elvek, amelyek segítenek jobb kódot írni
+    \item Haladó C technikák, amelyekkel tesztelhető és rugalmas programokat készíthetünk
+    \item Kódújratervezés
+    \item Munka örökölt kóddal
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "prog_eloadas_01"
+%%% End:
