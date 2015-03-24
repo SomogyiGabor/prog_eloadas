@@ -31,6 +31,9 @@ TEST(PushAndPop, PopOneElement)
 	CHECK_EQUAL(3, poppedValue);
 }
 
+IGNORE_TEST(PushAndPop, PushAndPopManyElements)
+{}
+
 IGNORE_TEST(PushAndPop, PopIntoNullDoesNotCrash)
 {}
 
