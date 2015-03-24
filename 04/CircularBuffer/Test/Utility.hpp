@@ -39,8 +39,11 @@ TEST(Utility, NewlyCreatedIsNotFull)
 	CHECK_FALSE(CircularBuffer_Full());
 }
 
-IGNORE_TEST(Utility, PushOneElementMakesBufferNotEmpty)
-{}
+TEST(Utility, PushOneElementMakesBufferNotEmpty)
+{
+	CircularBuffer_Push(2);
+	CHECK_FALSE(CircularBuffer_Empty());
+}
 
 TEST(Utility, FullBufferIsFull)
 {
