@@ -20,6 +20,8 @@ int CircularBuffer_Create(const size_t numberOfElements)
 		return -1;
 
 	itsUsed = 0;
+	itsWriteIndex = 0;
+	itsReadIndex = 0;
 
 	return 0;
 }
@@ -48,6 +50,9 @@ int CircularBuffer_Push(const int element)
 int CircularBuffer_Pop(int* element)
 {
 	if (itsBuffer == NULL)
+		return -1;
+
+	if (element == NULL)
 		return -1;
 
 	*element = itsBuffer[itsReadIndex];

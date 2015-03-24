@@ -55,8 +55,15 @@ TEST(PushAndPop, PushAndPopManyElements)
 	CHECK_EQUAL(3, poppedElement);
 }
 
-IGNORE_TEST(PushAndPop, PopIntoNullDoesNotCrash)
-{}
+TEST(PushAndPop, PopIntoNullDoesNotCrash)
+{
+	CircularBuffer_Push(11);
+
+	const int res = CircularBuffer_Pop(NULL);
+	CHECK_EQUAL(-1, res);
+
+	CHECK_FALSE(CircularBuffer_Empty());
+}
 
 IGNORE_TEST(PushAndPop, PushIntoFullRaisesAnError)
 {}
