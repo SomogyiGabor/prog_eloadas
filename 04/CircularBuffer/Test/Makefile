@@ -14,8 +14,8 @@ INCLUDE_DIRECTORIES = \
 
 INCLUDE_FLAGS = $(patsubst %,-I%,$(INCLUDE_DIRECTORIES))
 
-CFLAGS = $(INCLUDE_FLAGS)
-CXXFLAGS = $(INCLUDE_FLAGS)
+CFLAGS = $(INCLUDE_FLAGS) -include CppUTest/MemoryLeakDetectorMallocMacros.h
+CXXFLAGS = $(INCLUDE_FLAGS) -include CppUTest/MemoryLeakDetectorMallocMacros.h -include CppUTest/MemoryLeakDetectorNewMacros.h
 LDFLAGS = -lCppUTest
 
 CC = gcc
