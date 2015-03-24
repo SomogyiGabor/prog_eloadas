@@ -10,14 +10,22 @@ extern "C"
 
 TEST_GROUP(Utility)
 {
+	static const int BUFFER_SIZE = 4;
 	TEST_SETUP()
 	{
-		CircularBuffer_Create(4);
+		CircularBuffer_Create(BUFFER_SIZE);
 	}
 
 	TEST_TEARDOWN()
 	{
 		CircularBuffer_Destroy();
+	}
+
+protected:
+	void MakeBufferFull()
+	{
+		for(int i = 0; i < 4; ++i)
+			CircularBuffer_Push(i);
 	}
 };
 
@@ -34,7 +42,10 @@ TEST(Utility, NewlyCreatedIsNotFull)
 IGNORE_TEST(Utility, PushOneElementMakesBufferNotEmpty)
 {}
 
-IGNORE_TEST(Utility, FullBufferIsFull)
-{}
+TEST(Utility, FullBufferIsFull)
+{
+	MakeBufferFull();
+	CHECK_TRUE( CircularBuffer_Full() );
+}
 
 #endif

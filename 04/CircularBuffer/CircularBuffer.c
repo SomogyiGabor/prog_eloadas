@@ -3,6 +3,8 @@
 #include <stdlib.h>
 
 static int* itsBuffer;
+
+static size_t itsSize;
 static size_t itsUsed;
 static size_t itsWriteIndex;
 static size_t itsReadIndex;
@@ -19,6 +21,7 @@ int CircularBuffer_Create(const size_t numberOfElements)
 	if (itsBuffer == NULL)
 		return -1;
 
+	itsSize = numberOfElements;
 	itsUsed = 0;
 	itsWriteIndex = 0;
 	itsReadIndex = 0;
@@ -30,7 +33,6 @@ void CircularBuffer_Destroy()
 {
 	free(itsBuffer);
 	itsBuffer = NULL;
-	itsUsed = 0;
 }
 
 
@@ -68,5 +70,5 @@ bool CircularBuffer_Empty()
 
 bool CircularBuffer_Full()
 {
-	return false;
+	return (itsUsed == itsSize);
 }
