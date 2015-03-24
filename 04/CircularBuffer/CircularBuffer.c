@@ -12,11 +12,14 @@ int CircularBuffer_Create(const size_t numberOfElements)
 	if (numberOfElements == 0)
 		return -1;
 
-	itsUsed = 0;
 	if (itsBuffer != NULL)
-		free(itsBuffer);
+		CircularBuffer_Destroy();
 
 	itsBuffer = calloc(numberOfElements, sizeof(int));
+	if (itsBuffer == NULL)
+		return -1;
+
+	itsUsed = 0;
 
 	return 0;
 }

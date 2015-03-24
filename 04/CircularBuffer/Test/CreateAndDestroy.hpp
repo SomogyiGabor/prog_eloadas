@@ -7,6 +7,7 @@ extern "C"
 }
 
 #include <CppUTest/TestHarness.h>
+#include <CppUTest/TestHarness_c.h>
 
 TEST_GROUP(CreateAndDestroy)
 {
@@ -16,6 +17,14 @@ TEST(CreateAndDestroy, CreateWithZeroSizeIsInvalid)
 {
 	const int res = CircularBuffer_Create(0);
 	CHECK_EQUAL(-1, res);
+}
+
+TEST(CreateAndDestroy, FailingMemoryAllocationAborts)
+{
+	cpputest_malloc_set_out_of_memory();
+	const int res = CircularBuffer_Create(10);
+	CHECK_EQUAL(-1, res);
+	cpputest_malloc_set_not_out_of_memory();
 }
 
 TEST(CreateAndDestroy, DoubleCreateResets)
