@@ -25,6 +25,8 @@ TEST(CreateAndDestroy, DoubleCreateResets)
 
 	const int secondResult = CircularBuffer_Create(10);
 	CHECK_EQUAL(0, secondResult);
+
+	CircularBuffer_Destroy();
 }
 
 TEST(CreateAndDestroy, RegularDestroy)
@@ -53,6 +55,8 @@ TEST(CreateAndDestroy, SecondInitializationClearsTheBuffer)
 
 	CircularBuffer_Create(10);
 	CHECK_TRUE(CircularBuffer_Empty());
+
+	CircularBuffer_Destroy();
 }
 
 TEST(CreateAndDestroy, PushBeforeCreateIsInvalid)

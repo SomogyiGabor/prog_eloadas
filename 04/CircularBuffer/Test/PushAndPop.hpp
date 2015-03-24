@@ -37,8 +37,23 @@ TEST(PushAndPop, PopOneElement)
 	CHECK_EQUAL(3, poppedValue);
 }
 
-IGNORE_TEST(PushAndPop, PushAndPopManyElements)
-{}
+TEST(PushAndPop, PushAndPopManyElements)
+{
+	CircularBuffer_Push(1);
+	CircularBuffer_Push(2);
+	CircularBuffer_Push(3);
+
+	int poppedElement = 0;
+
+	CircularBuffer_Pop(&poppedElement);
+	CHECK_EQUAL(1, poppedElement);
+
+	CircularBuffer_Pop(&poppedElement);
+	CHECK_EQUAL(2, poppedElement);
+
+	CircularBuffer_Pop(&poppedElement);
+	CHECK_EQUAL(3, poppedElement);
+}
 
 IGNORE_TEST(PushAndPop, PopIntoNullDoesNotCrash)
 {}
@@ -47,6 +62,9 @@ IGNORE_TEST(PushAndPop, PushIntoFullRaisesAnError)
 {}
 
 IGNORE_TEST(PushAndPop, PopFromEmptyRaisesAnError)
+{}
+
+IGNORE_TEST(PushAndPop, PushAndPopAroundTheBoundary)
 {}
 
 #endif

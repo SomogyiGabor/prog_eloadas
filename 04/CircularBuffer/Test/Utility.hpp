@@ -9,17 +9,25 @@ extern "C"
 #include <CppUTest/TestHarness.h>
 
 TEST_GROUP(Utility)
-{};
+{
+	TEST_SETUP()
+	{
+		CircularBuffer_Create(4);
+	}
+
+	TEST_TEARDOWN()
+	{
+		CircularBuffer_Destroy();
+	}
+};
 
 TEST(Utility, NewlyCreatedIsEmpty)
 {
-	CircularBuffer_Create(10);
 	CHECK_TRUE(CircularBuffer_Empty());
 }
 
 TEST(Utility, NewlyCreatedIsNotFull)
 {
-	CircularBuffer_Create(10);
 	CHECK_FALSE(CircularBuffer_Full());
 }
 
