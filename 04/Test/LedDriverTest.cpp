@@ -10,10 +10,12 @@ extern "C"
 TEST_GROUP(LedDriver)
 {
 	uint16_t virtualLeds;
+	Logic logic;
 
 	TEST_SETUP()
 	{
-		LedDriver_Create(&virtualLeds, PONALT);
+		logic = NEGALT;
+		LedDriver_Create(&virtualLeds, logic);
 	}
 
 	TEST_TEARDOWN()
@@ -21,7 +23,14 @@ TEST_GROUP(LedDriver)
 
 	void AssertVirtualLeds(uint16_t expectedState)
 	{
-		CHECK_EQUAL(expectedState, virtualLeds);
+		if (logic == PONALT)
+		{
+			CHECK_EQUAL(expectedState, virtualLeds);
+		}
+		else
+		{
+			CHECK_EQUAL(~expectedState & 0xffff, virtualLeds);
+		}
 	}
 };
 
