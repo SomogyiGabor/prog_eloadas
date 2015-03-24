@@ -86,7 +86,26 @@ TEST(PushAndPop, PopFromEmptyRaisesAnError)
 	CHECK_EQUAL(-1, res);
 }
 
-IGNORE_TEST(PushAndPop, PushAndPopAroundTheBoundary)
-{}
+TEST(PushAndPop, PushAndPopAroundTheBoundary)
+{
+	for(int i = 0; i < BUFFER_SIZE - 1; ++i)
+	{
+		CircularBuffer_Push(33);
+		int poppedValue = 0;
+		CircularBuffer_Pop(&poppedValue);
+	}
+
+	for(int i = 0; i < BUFFER_SIZE; ++i)
+	{
+		const int pushResult = CircularBuffer_Push(5 + i);
+		CHECK_EQUAL(0, pushResult);
+
+		int poppedElement = 321;
+		const int popResult = CircularBuffer_Pop(&poppedElement);
+		CHECK_EQUAL(0, popResult);
+
+		CHECK_EQUAL(5 + i, poppedElement);
+	}
+}
 
 #endif

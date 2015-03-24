@@ -35,6 +35,13 @@ void CircularBuffer_Destroy()
 	itsBuffer = NULL;
 }
 
+static int NextIndex(const int index)
+{
+	const int increased = index + 1;
+	if (increased == itsSize)
+		return 0;
+	return increased;
+}
 
 int CircularBuffer_Push(const int element)
 {
@@ -45,8 +52,7 @@ int CircularBuffer_Push(const int element)
 		return -1;
 
 	itsBuffer[itsWriteIndex] = element;
-
-	itsWriteIndex++;
+	itsWriteIndex = NextIndex(itsWriteIndex);
 	itsUsed++;
 
 	return 0;
@@ -64,7 +70,8 @@ int CircularBuffer_Pop(int* element)
 		return -1;
 
 	*element = itsBuffer[itsReadIndex];
-	itsReadIndex++;
+	itsReadIndex = NextIndex(itsReadIndex);
+	itsUsed--;
 
 	return 0;
 }
