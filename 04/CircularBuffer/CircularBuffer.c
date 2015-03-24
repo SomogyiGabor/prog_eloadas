@@ -41,6 +41,9 @@ int CircularBuffer_Push(const int element)
 	if (itsBuffer == NULL)
 		return -1;
 
+	if (itsUsed == itsSize)
+		return -1;
+
 	itsBuffer[itsWriteIndex] = element;
 
 	itsWriteIndex++;

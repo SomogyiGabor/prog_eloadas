@@ -10,9 +10,11 @@ extern "C"
 
 TEST_GROUP(PushAndPop)
 {
+	static const int BUFFER_SIZE = 10;
+
 	TEST_SETUP()
 	{
-		CircularBuffer_Create(10);
+		CircularBuffer_Create(BUFFER_SIZE);
 	}
 
 	TEST_TEARDOWN()
@@ -65,8 +67,17 @@ TEST(PushAndPop, PopIntoNullDoesNotCrash)
 	CHECK_FALSE(CircularBuffer_Empty());
 }
 
-IGNORE_TEST(PushAndPop, PushIntoFullRaisesAnError)
-{}
+TEST(PushAndPop, PushIntoFullRaisesAnError)
+{
+	for (int i = 0; i < BUFFER_SIZE; ++i)
+	{
+		const int res = CircularBuffer_Push(3 + i);
+		CHECK_EQUAL(0, res);
+	}
+
+	const int res = CircularBuffer_Push(11);
+	CHECK_EQUAL(-1, res);
+}
 
 IGNORE_TEST(PushAndPop, PopFromEmptyRaisesAnError)
 {}
