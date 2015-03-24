@@ -17,7 +17,7 @@ static void updateHardware()
 	*ledsAddress = ledsImage;
 }
 
-void LedDriver_Create(uint16_t* address)
+void LedDriver_Create(uint16_t* address, Logic logic)
 {
 	ledsAddress = address;
 	ledsImage = ALL_LEDS_OFF;

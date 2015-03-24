@@ -6,7 +6,10 @@
 enum BOOL{FALSE = 0, TRUE = 1};
 typedef enum BOOL BOOL;
 
-void LedDriver_Create(uint16_t* address);
+enum Logic{PONALT, NEGALT};
+typedef enum Logic Logic;
+
+void LedDriver_Create(uint16_t* address, Logic logic);
 
 void LedDriver_TurnOn(int ledNumber);
 void LedDriver_TurnOff(int ledNumber);
