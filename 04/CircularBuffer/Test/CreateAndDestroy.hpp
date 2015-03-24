@@ -45,7 +45,14 @@ TEST(CreateAndDestroy, DoubleDestroyDoesNotCrash)
 	CircularBuffer_Destroy();
 }
 
-IGNORE_TEST(CreateAndDestroy, SecondInitializationClearsTheBuffer)
-{}
+TEST(CreateAndDestroy, SecondInitializationClearsTheBuffer)
+{
+	CircularBuffer_Create(10);
+	CircularBuffer_Push(33);
+	CHECK_FALSE(CircularBuffer_Empty());
+
+	CircularBuffer_Create(10);
+	CHECK_TRUE(CircularBuffer_Empty());
+}
 
 #endif
