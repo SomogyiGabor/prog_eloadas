@@ -18,26 +18,31 @@ TEST_GROUP(LedDriver)
 
 	TEST_TEARDOWN()
 	{}
+
+	void AssertVirtualLeds(uint16_t expectedState)
+	{
+		CHECK_EQUAL(expectedState, virtualLeds);
+	}
 };
 
 TEST(LedDriver, LedsOffAfterCreate)
 {
 	uint16_t virtualLeds = 0xffff;
 	LedDriver_Create(&virtualLeds);
-	CHECK_EQUAL(0x0000, virtualLeds);
+	AssertVirtualLeds(0x0000);
 }
 
 TEST(LedDriver, TurnOnLedOne)
 {
 	LedDriver_TurnOn(1);
-	CHECK_EQUAL(0x0001, virtualLeds);
+	AssertVirtualLeds(0x0001);
 }
 
 TEST(LedDriver, TurnOffLedOne)
 {
 	LedDriver_TurnOn(1);
 	LedDriver_TurnOff(1);
-	CHECK_EQUAL(0x0000, virtualLeds);
+	AssertVirtualLeds(0x0000);
 }
 
 TEST(LedDriver, TurnOnMultipleTests)
@@ -45,7 +50,7 @@ TEST(LedDriver, TurnOnMultipleTests)
 	LedDriver_TurnOn(9);
 	LedDriver_TurnOn(8);
 
-	CHECK_EQUAL(0x180, virtualLeds);
+	AssertVirtualLeds(0x0180);
 }
 
 TEST(LedDriver, TurnOffMultipleLeds)
@@ -53,7 +58,7 @@ TEST(LedDriver, TurnOffMultipleLeds)
 	LedDriver_TurnAllOn();
 	LedDriver_TurnOff(9);
 	LedDriver_TurnOff(8);
-	CHECK_EQUAL(~(0x0180) & 0xffff, virtualLeds);
+	AssertVirtualLeds(~(0x0180) & 0xffff);
 }
 
 TEST(LedDriver, TurnOffAnyLed)
@@ -61,34 +66,34 @@ TEST(LedDriver, TurnOffAnyLed)
 	LedDriver_TurnAllOn();
 	LedDriver_TurnOff(8);
 
-	CHECK_EQUAL(0xff7f, virtualLeds);
+	AssertVirtualLeds(0xff7f);
 }
 
 TEST(LedDriver, AllOn)
 {
 	LedDriver_TurnAllOn();
-	CHECK_EQUAL(0xffff, virtualLeds);
+	AssertVirtualLeds(0xffff);
 }
 
 TEST(LedDriver, AllOff)
 {
 	LedDriver_TurnAllOn();
 	LedDriver_TurnAllOff();
-	CHECK_EQUAL(0x0000, virtualLeds);
+	AssertVirtualLeds(0x0000);
 }
 
 TEST(LedDriver, LedMemoryIsNotReadable)
 {
 	virtualLeds = 0xffff;
 	LedDriver_TurnOn(8);
-	CHECK_EQUAL(0x0080, virtualLeds);
+	AssertVirtualLeds(0x0080);
 }
 
 TEST(LedDriver, UpperAndLowerBounds)
 {
 	LedDriver_TurnOn(1);
 	LedDriver_TurnOn(16);
-	CHECK_EQUAL(0x8001, virtualLeds);
+	AssertVirtualLeds(0x8001);
 }
 
 TEST(LedDriver, OutOfBoundsTurnOnDoesNotHarm)
@@ -97,7 +102,7 @@ TEST(LedDriver, OutOfBoundsTurnOnDoesNotHarm)
 	LedDriver_TurnOn(0);
 	LedDriver_TurnOn(17);
 	LedDriver_TurnOn(3141);
-	CHECK_EQUAL(0, virtualLeds);
+	AssertVirtualLeds(0);
 }
 
 TEST(LedDriver, OutOfBoundsTurnOffDoesNotHarm)
@@ -107,7 +112,7 @@ TEST(LedDriver, OutOfBoundsTurnOffDoesNotHarm)
 	LedDriver_TurnOff(0);
 	LedDriver_TurnOff(17);
 	LedDriver_TurnOff(3141);
-	CHECK_EQUAL(0xffff, virtualLeds);
+	AssertVirtualLeds(0xffff);
 }
 
 IGNORE_TEST(LedDriver, OutOfBoundsProducesRuntimeError)
