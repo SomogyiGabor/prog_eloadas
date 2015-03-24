@@ -1,5 +1,6 @@
 #include "CircularBuffer.h"
 
+static int* itsBuffer;
 static size_t itsUsed;
 
 int CircularBuffer_Create(const size_t numberOfElements)
@@ -16,12 +17,18 @@ void CircularBuffer_Destroy()
 
 int CircularBuffer_Push(const int element)
 {
+	if (itsBuffer == NULL)
+		return -1;
+
 	itsUsed++;
 	return 0;
 }
 
 int CircularBuffer_Pop(int* element)
 {
+	if (itsBuffer == NULL)
+		return -1;
+
 	*element = 3;
 	return 0;
 }

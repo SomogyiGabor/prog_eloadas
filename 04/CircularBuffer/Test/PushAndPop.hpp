@@ -12,9 +12,6 @@ TEST_GROUP(PushAndPop)
 {
 };
 
-IGNORE_TEST(PushAndPop, PushBeforeCreateIsInvalid)
-{}
-
 TEST(PushAndPop, PushAnElement)
 {
 	const int res = CircularBuffer_Push(3);

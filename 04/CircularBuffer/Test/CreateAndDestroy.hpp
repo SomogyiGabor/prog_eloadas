@@ -55,4 +55,14 @@ TEST(CreateAndDestroy, SecondInitializationClearsTheBuffer)
 	CHECK_TRUE(CircularBuffer_Empty());
 }
 
+TEST(CreateAndDestroy, PushBeforeCreateIsInvalid)
+{
+	const int pushResult = CircularBuffer_Push(3);
+	CHECK_EQUAL(-1, pushResult);
+
+	int poppedElement;
+	const int popResult = CircularBuffer_Pop(&poppedElement);
+	CHECK_EQUAL(-1, popResult);
+}
+
 #endif
