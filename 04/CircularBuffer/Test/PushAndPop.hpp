@@ -10,6 +10,15 @@ extern "C"
 
 TEST_GROUP(PushAndPop)
 {
+	TEST_SETUP()
+	{
+		CircularBuffer_Create(10);
+	}
+
+	TEST_TEARDOWN()
+	{
+		CircularBuffer_Destroy();
+	}
 };
 
 TEST(PushAndPop, PushAnElement)

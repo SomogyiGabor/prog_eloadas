@@ -5,14 +5,22 @@ static size_t itsUsed;
 
 int CircularBuffer_Create(const size_t numberOfElements)
 {
-	itsUsed = 0;
+	static int a;
+
 	if (numberOfElements == 0)
 		return -1;
+
+	itsUsed = 0;
+	itsBuffer = &a;
+
 	return 0;
 }
 
 void CircularBuffer_Destroy()
-{}
+{
+	itsBuffer = NULL;
+	itsUsed = 0;
+}
 
 
 int CircularBuffer_Push(const int element)
