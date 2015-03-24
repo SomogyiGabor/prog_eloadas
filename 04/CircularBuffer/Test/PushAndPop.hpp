@@ -79,8 +79,12 @@ TEST(PushAndPop, PushIntoFullRaisesAnError)
 	CHECK_EQUAL(-1, res);
 }
 
-IGNORE_TEST(PushAndPop, PopFromEmptyRaisesAnError)
-{}
+TEST(PushAndPop, PopFromEmptyRaisesAnError)
+{
+	int poppedElement = 11;
+	const int res = CircularBuffer_Pop(&poppedElement);
+	CHECK_EQUAL(-1, res);
+}
 
 IGNORE_TEST(PushAndPop, PushAndPopAroundTheBoundary)
 {}

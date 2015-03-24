@@ -60,6 +60,9 @@ int CircularBuffer_Pop(int* element)
 	if (element == NULL)
 		return -1;
 
+	if (itsUsed == 0)
+		return -1;
+
 	*element = itsBuffer[itsReadIndex];
 	itsReadIndex++;
 
