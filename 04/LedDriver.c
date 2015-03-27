@@ -3,6 +3,7 @@
 
 static uint16_t* ledsAddress;
 static uint16_t ledsImage;
+static Logic ledsLogic;
 
 enum{ALL_LEDS_ON = ~0, ALL_LEDS_OFF = ~ALL_LEDS_ON};
 enum{FIRST_LED = 1, LAST_LED = 16};
@@ -14,13 +15,17 @@ static BOOL IsLedOutOfBounds(int ledNumber)
 
 static void updateHardware()
 {
-	*ledsAddress = ledsImage;
+	if (ledsLogic == PONALT)
+		*ledsAddress = ledsImage;
+	else
+		*ledsAddress = ~ledsImage & 0xffff;
 }
 
-void LedDriver_Create(uint16_t* address)
+void LedDriver_Create(uint16_t* address, Logic logic)
 {
 	ledsAddress = address;
 	ledsImage = ALL_LEDS_OFF;
+	ledsLogic = logic;
 	updateHardware();
 }
 
